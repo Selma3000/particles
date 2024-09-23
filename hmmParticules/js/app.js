@@ -18,27 +18,28 @@ class Particle {
     }
     // run 60 times per second
     draw(context){
-      context.fillStyle = 'hsl('+ Math.random() * 230+',70%,36%)'
+      context.fillStyle = 'hsl('+ Math.random() *6+',100%,36%)'
       context.beginPath();
       context.arc(this.x, this.y, this.radius,0,Math.PI*2);
       context.fill();
       context.stroke();
     }
     update() {
-      this.x++;
       this.y++;
-      if (this.x > canvas.width) {
+      if (this.y >= canvas.width) {
+        this.y = this.y-this.x;
+
+        //this.y = this.y *0.7
       }
     }
 }
-
 class Effect {
     constructor(canvas) {
       this.canvas = canvas ;
       this.width= this.canvas.width;
       this.height = this.canvas.height
       this.particles = [];
-      this.numberOfParticles = 200;
+      this.numberOfParticles = 20;
       this.createParticles();
     }
     createParticles() {
